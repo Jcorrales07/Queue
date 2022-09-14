@@ -1,0 +1,3 @@
+C:/Users/Corra/CLionProjects/Cola/cmake-build-debug/CMakeFiles/Cola.dir
+C:/Users/Corra/CLionProjects/Cola/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Corra/CLionProjects/Cola/cmake-build-debug/CMakeFiles/rebuild_cache.dir
