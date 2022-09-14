@@ -44,7 +44,6 @@ Object *ArrayQueue::primero() {
  * **/
 void ArrayQueue::encolar(Object* alumno) {
     TDACola::encolar(alumno);
-    TDACola::imprime_cola();
 }
 
 /*

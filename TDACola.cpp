@@ -98,7 +98,8 @@ Object* TDACola::desencolar(int posicion) {
  * devuelve nullptr
  * **/
 Object* TDACola::primero() {
-    if (!estaVacia()) {
+
+    if (estaVacia() != 0) {
         return array[0];
     }
     return nullptr;
@@ -109,5 +110,5 @@ Object* TDACola::primero() {
  * devuelve true si la cola esta vacia
  * **/
 bool TDACola::estaVacia() {
-    return array[0] == nullptr;
+    return (array[0] == nullptr);
 }
