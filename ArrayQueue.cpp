@@ -1,4 +1,5 @@
 #include "ArrayQueue.h"
+#include "iostream"
 /*
  * Constructor de una cola tipo Array
  * **/
@@ -35,7 +36,7 @@ void ArrayQueue::anula() {
 /*
  * Devuelve el primer elemento de la cola
  * **/
-Object *ArrayQueue::primero() {
+Object* ArrayQueue::primero() {
     return TDACola::primero();
 }
 
@@ -49,7 +50,7 @@ void ArrayQueue::encolar(Object* alumno) {
 /*
  * Elimina el primer elemento de la cola
  * **/
-Object *ArrayQueue::desencolar(int posicion) {
+Object* ArrayQueue::desencolar(int posicion) {
     return TDACola::desencolar(posicion);
 }
 

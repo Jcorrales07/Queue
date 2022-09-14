@@ -98,10 +98,10 @@ Object* TDACola::desencolar(int posicion) {
  * devuelve nullptr
  * **/
 Object* TDACola::primero() {
-
-    if (estaVacia() != 0) {
+    if (!estaVacia()) {
         return array[0];
     }
+
     return nullptr;
 }
 

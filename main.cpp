@@ -67,10 +67,10 @@ void arrayCola() {
         if (opcion == 1) {
 
             std::cout << "[=== Funcion Encolar ===]" << std::endl;
-            std::cout << "Ingrese el nombre del alumno: ";
+            std::cout << "Ingrese el nombre del alumno :";
             std::string nombre;
             std::cin >> nombre;
-            std::cout << "Ingrese el codigo del alumno: ";
+            std::cout << "Ingrese el codigo del alumno :";
             std::string codigo;
             std::cin >> codigo;
 
@@ -85,18 +85,25 @@ void arrayCola() {
 
             Alumno* primerAlumno = dynamic_cast<Alumno *>(cola->primero());
 
-            string respuesta = (primerAlumno != nullptr) ? "El primer alumno es: " + primerAlumno->getNombre()
-                                                            : "La cola esta vacia";
-            std::cout << respuesta << std::endl;
+            if (primerAlumno != nullptr) {
+                std::cout << "El primer alumno es : " << primerAlumno->getNombre() << std::endl;
+            } else {
+                std::cout << "La cola esta vacia" << std::endl;
+            }
 
         } else if (opcion == 4) {
 
-            std::cout << cola->estaVacia() << std::endl;
+            string respuesta = (cola->estaVacia() != 0) ? "La cola NO esta vacia" : "La cola esta vacia";
+            std::cout << respuesta << std::endl;
 
         } else if (opcion == 5) {
+
             cola->imprime_cola();
+
         } else if (opcion == 6) {
+
             menuCola();
+
         } else {
             std::cout << "Opcion no valida" << std::endl;
         }
