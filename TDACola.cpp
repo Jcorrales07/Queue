@@ -7,7 +7,7 @@
 TDACola::TDACola() {
     length = 0;
     capacidad = 10;
-    array = new Alumno *[capacidad];
+    array = new Object *[capacidad];
 }
 
 /*
@@ -35,7 +35,7 @@ void TDACola::anula() {
         delete[] array;
         length = 0;
         capacidad = 10;
-        array = new Alumno *[capacidad];
+        array = new Object *[capacidad];
     }
 }
 
@@ -45,7 +45,7 @@ void TDACola::anula() {
 void TDACola::encolar(Object* alumno) {
     // Si la cola está llena, se duplica el tamaño del arreglo
     if (length == capacidad) {
-        Alumno** temp = new Alumno *[capacidad * 2]; // creamos un arreglo temporal con el tamaño duplicado
+        auto** temp = new Object *[capacidad * 2]; // creamos un arreglo temporal con el tamaño duplicado
         // copiamos los elementos del arreglo original al arreglo temporal
         for (int i = 0; i < capacidad; i++) {
             temp[i] = array[i];
@@ -57,7 +57,7 @@ void TDACola::encolar(Object* alumno) {
     }
 
     // Agregamos el elemento al final de la cola
-    array[length] = dynamic_cast<Alumno *>(alumno);
+    array[length] = alumno;
     length++;
 }
 
@@ -67,7 +67,7 @@ void TDACola::encolar(Object* alumno) {
 void TDACola::imprime_cola() {
     if (!estaVacia()) {
         for (int i = 0; i < length; i++) {
-            std::cout << " [ " << array[i]->getNombre() << ", " << array[i]->getCuenta() << " ] ";
+            std::cout << " [ " << array[i]->toString() << " ] ";
         }
     } else {
         std::cout << "La cola esta vacia" << std::endl;
@@ -110,5 +110,11 @@ Object* TDACola::primero() {
  * devuelve true si la cola esta vacia
  * **/
 bool TDACola::estaVacia() {
-    return (array[0] == nullptr);
+//    for (int i = 0; i < capacidad; i++) {
+//        if (array[i] == nullptr) {
+//            return true;
+//        }
+//    }
+//    return false;
+    return array[0] == nullptr;
 }

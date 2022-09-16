@@ -19,7 +19,7 @@ class TDACola
 		virtual bool                    estaVacia() = 0; //devuelve true si la cola esta vacia
 		
 	protected:
-        Alumno** array;
+        Object** array;
         int capacidad;
         int length;
 };

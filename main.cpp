@@ -11,6 +11,7 @@ ArrayQueue          *cola = new ArrayQueue();
 
 
 int main() {
+
     menuCola();
 
     return 0;
@@ -57,12 +58,15 @@ void operacionesCola() {
 }
 
 void arrayCola() {
+
     int opcion = 0;
 
     do {
         operacionesCola();
         std::cout << "Opcion #";
         std::cin >> opcion;
+
+        std::cout << std::endl;
 
         if (opcion == 1) {
 
@@ -83,23 +87,28 @@ void arrayCola() {
 
         } else if (opcion == 3) {
 
-            Alumno* primerAlumno = dynamic_cast<Alumno *>(cola->primero());
+            auto* primerAlumno = dynamic_cast<Alumno *>(cola->primero());
 
-            if (primerAlumno != nullptr) {
-                std::cout << "El primer alumno es : " << primerAlumno->getNombre() << std::endl;
-            } else {
-                std::cout << "La cola esta vacia" << std::endl;
-            }
+            string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->getNombre()
+                                                : "La cola esta vacia";
+
+            std::cout << respuesta << std::endl;
+
+            //delete primerAlumno;
+            primerAlumno = nullptr;
 
         } else if (opcion == 4) {
 
-            string respuesta = (cola->estaVacia() != 0) ? "La cola NO esta vacia" : "La cola esta vacia";
+            string respuesta = (cola->estaVacia()) ? "La cola esta vacia"
+                                                    : "La cola NO esta vacia";
             std::cout << respuesta << std::endl;
 
         } else if (opcion == 5) {
-
-            cola->imprime_cola();
-
+            try {
+                cola->imprime_cola();
+            } catch (std::exception &e) {
+                std::cout << e.what() << std::endl;
+            }
         } else if (opcion == 6) {
 
             menuCola();
