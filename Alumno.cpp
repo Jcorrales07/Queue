@@ -11,11 +11,17 @@ Alumno::Alumno(string nombre, string cuenta){
 }
 
 bool Alumno::equals(Object* obj){
-    return true;
+
+    auto *alumno = dynamic_cast<Alumno*>(obj);
+    if (alumno->getNombre() == this->nombre && alumno->getCuenta() == this->cuenta) {
+        return true;
+    }
+    
+    return false;
 }
 
 string Alumno::toString(){
-    return "Nombre: " + nombre + ", Cuenta: " + cuenta;
+    return "Nombre: " + getNombre() + ", Cuenta: " + getCuenta();
 }
 
 string Alumno::getNombre(){

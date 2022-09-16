@@ -7,13 +7,13 @@
 void                menuCola();
 void                operacionesCola();
 void                arrayCola();
-ArrayQueue          *cola = new ArrayQueue();
+void                linkedCola();
 
+ArrayQueue          *arrayQueue = nullptr;
+//LinkedQueue         *linkedQueue = nullptr;
 
 int main() {
-
     menuCola();
-
     return 0;
 }
 
@@ -59,6 +59,7 @@ void operacionesCola() {
 
 void arrayCola() {
 
+    arrayQueue = new ArrayQueue();
     int opcion = 0;
 
     do {
@@ -79,15 +80,15 @@ void arrayCola() {
             std::cin >> codigo;
 
             Object *nuevoAlumno = new Alumno(nombre, codigo);
-            cola->encolar(nuevoAlumno);
+            arrayQueue->encolar(nuevoAlumno);
 
         } else if (opcion == 2) {
 
-            cola->desencolar(0);
+            arrayQueue->desencolar(0);
 
         } else if (opcion == 3) {
 
-            auto* primerAlumno = dynamic_cast<Alumno *>(cola->primero());
+            auto* primerAlumno = dynamic_cast<Alumno *>(arrayQueue->primero());
 
             string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->getNombre()
                                                 : "La cola esta vacia";
@@ -99,16 +100,86 @@ void arrayCola() {
 
         } else if (opcion == 4) {
 
-            string respuesta = (cola->estaVacia()) ? "La cola esta vacia"
+            string respuesta = (arrayQueue->estaVacia()) ? "La cola esta vacia"
                                                     : "La cola NO esta vacia";
             std::cout << respuesta << std::endl;
 
         } else if (opcion == 5) {
             try {
-                cola->imprime_cola();
+
+                arrayQueue->imprime_cola();
+
             } catch (std::exception &e) {
+
                 std::cout << e.what() << std::endl;
+
             }
+        } else if (opcion == 6) {
+
+            menuCola();
+
+        } else {
+            std::cout << "Opcion no valida" << std::endl;
+        }
+    } while (opcion != 6);
+}
+
+void linkedCola() {
+
+//    linkedQueue = new LinkedQueue();
+    int opcion = 0;
+
+    do {
+        operacionesCola();
+        std::cout << "Opcion #";
+        std::cin >> opcion;
+        std::cout << std::endl;
+
+        if (opcion == 1) {
+
+            std::cout << "[=== Funcion Encolar ===]" << std::endl;
+            std::cout << "Ingrese el nombre del alumno :";
+            std::string nombre;
+            std::cin >> nombre;
+            std::cout << "Ingrese el codigo del alumno :";
+            std::string codigo;
+            std::cin >> codigo;
+
+            Object *nuevoAlumno = new Alumno(nombre, codigo);
+//            arrayQueue->encolar(nuevoAlumno);
+
+        } else if (opcion == 2) {
+
+//            arrayQueue->desencolar(0);
+
+        } else if (opcion == 3) {
+
+            auto* primerAlumno = dynamic_cast<Alumno *>(arrayQueue->primero());
+
+//            string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->getNombre()
+//                                              : "La cola esta vacia";
+
+//            std::cout << respuesta << std::endl;
+
+            //delete primerAlumno;
+//            primerAlumno = nullptr;
+
+        } else if (opcion == 4) {
+//
+//            string respuesta = (arrayQueue->estaVacia()) ? "La cola esta vacia"
+//                                                         : "La cola NO esta vacia";
+//            std::cout << respuesta << std::endl;
+
+        } else if (opcion == 5) {
+//            try {
+//
+//                arrayQueue->imprime_cola();
+//
+//            } catch (std::exception &e) {
+//
+//                std::cout << e.what() << std::endl;
+//
+//            }
         } else if (opcion == 6) {
 
             menuCola();
