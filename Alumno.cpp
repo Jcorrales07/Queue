@@ -21,7 +21,7 @@ bool Alumno::equals(Object* obj){
 }
 
 string Alumno::toString(){
-    return "Nombre: " + getNombre() + ", Cuenta: " + getCuenta();
+    return " { nombre: " + getNombre() + ", cuenta: " + getCuenta() + " } ";
 }
 
 string Alumno::getNombre(){

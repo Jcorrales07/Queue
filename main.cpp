@@ -152,15 +152,14 @@ void linkedCola() {
 
         } else if (opcion == 3) {
 
-            auto* primerAlumno = dynamic_cast<Alumno *>(arrayQueue->primero());
+            auto* primerAlumno = dynamic_cast<Alumno *>(linkedQueue->primero());
 
-//            string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->getNombre()
-//                                              : "La cola esta vacia";
+            string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->toString()
+                                              : "La cola esta vacia";
 
-//            std::cout << respuesta << std::endl;
+            std::cout << respuesta << std::endl;
 
-            //delete primerAlumno;
-//            primerAlumno = nullptr;
+            primerAlumno = nullptr;
 
         } else if (opcion == 4) {
 //

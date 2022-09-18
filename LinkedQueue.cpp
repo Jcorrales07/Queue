@@ -47,10 +47,10 @@ void LinkedQueue::anula() {
  * Devuelve el primer elemento de la cola
  * **/
 Object* LinkedQueue::primero() {
-    if (head) {
-        return head->getItem();
+    if (estaVacia()) {
+        return nullptr;
     }
-    return nullptr;
+    return head->getItem();
 }
 
 /*
@@ -123,7 +123,7 @@ void LinkedQueue::imprime_cola() {
     std::cout << " [ " << alumno->toString() << " ] "<< std::endl;
 
     while (actual->getSiguiente() != nullptr) {
-        actual = actual->getSiguiente();
+        actual = actual->getSiguiente(); // actualizamos el actual
         alumno = dynamic_cast<Alumno*>(actual->getItem()); // casteo el objeto a Alumno
         std::cout << " [ " << alumno->toString() << " ] "<< std::endl;
         alumno = nullptr;
