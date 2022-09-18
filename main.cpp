@@ -65,6 +65,7 @@ void arrayCola() {
     int opcion = 0;
 
     do {
+        std::cout << "[=== Operaciones ArrayQueue ===]" << std::endl;
         operacionesCola();
         std::cout << "Opcion #";
         std::cin >> opcion;
@@ -87,19 +88,16 @@ void arrayCola() {
         } else if (opcion == 2) {
 
             auto *alumnoDesencolado = dynamic_cast<Alumno *>(arrayQueue->desencolar(0));
-            auto resultado= (alumnoDesencolado) ? "Alumno desencolado: " + alumnoDesencolado->toString() : "No hay elementos en cola";
+            auto resultado= (alumnoDesencolado) ? "Alumno desencolado: " + alumnoDesencolado->toString()
+                                                        : "No hay elementos en cola";
             std::cout << resultado << std::endl;
 
         } else if (opcion == 3) {
 
             auto* primerAlumno = dynamic_cast<Alumno *>(arrayQueue->primero());
-
             string respuesta = (primerAlumno) ? "El primer alumno en cola es: " + primerAlumno->toString()
                                                 : "La cola esta vacia";
-
             std::cout << respuesta << std::endl;
-
-            //delete primerAlumno;
             primerAlumno = nullptr;
 
         } else if (opcion == 4) {
@@ -128,6 +126,7 @@ void linkedCola() {
     int opcion = 0;
 
     do {
+        std::cout << "[=== Operaciones LinkedQueue ===]" << std::endl;
         operacionesCola();
         std::cout << "Opcion #";
         std::cin >> opcion;
@@ -148,24 +147,24 @@ void linkedCola() {
 
         } else if (opcion == 2) {
 
-//            arrayQueue->desencolar(0);
+            auto *alumnoDesencolado = dynamic_cast<Alumno *>(linkedQueue->desencolar(0));
+            auto resultado= (alumnoDesencolado) ? "Alumno desencolado: " + alumnoDesencolado->toString()
+                                                        : "No hay elementos en cola";
+            std::cout << resultado << std::endl;
 
         } else if (opcion == 3) {
 
             auto* primerAlumno = dynamic_cast<Alumno *>(linkedQueue->primero());
-
             string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->toString()
                                               : "La cola esta vacia";
-
             std::cout << respuesta << std::endl;
-
             primerAlumno = nullptr;
 
         } else if (opcion == 4) {
-//
-//            string respuesta = (arrayQueue->estaVacia()) ? "La cola esta vacia"
-//                                                         : "La cola NO esta vacia";
-//            std::cout << respuesta << std::endl;
+
+            string respuesta = (linkedQueue->estaVacia()) ? "La cola esta vacia"
+                                                         : "La cola NO esta vacia";
+            std::cout << respuesta << std::endl;
 
         } else if (opcion == 5) {
 

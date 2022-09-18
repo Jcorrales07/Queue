@@ -29,7 +29,7 @@ LinkedQueue::~LinkedQueue(){
  * Anula la cola, limpia toda la cola y crea una nueva cola vacia
  * **/
 void LinkedQueue::anula() {
-    if(head) {
+    if(!estaVacia()) {
         Nodo* actual = head;
 
         while(actual->getSiguiente() != nullptr) {
@@ -80,23 +80,32 @@ void LinkedQueue::encolar(Object* obj) {
 
 /*
  * Quita el primer elemento de la cola
+ * @param pos no se usa
  * **/
-Object* LinkedQueue::desencolar(int) {
+Object* LinkedQueue::desencolar(int pos) {
+
     if(estaVacia()) {
         return nullptr;
     }
 
-    Nodo *primerNodo = head;
-    head = head->getSiguiente();
+    Nodo *primerNodo = head; // [cabeza actual]
+
+    if (head->getSiguiente() == nullptr) {
+        // si solo hay un elemento en la cola
+        head = nullptr;
+        return primerNodo->getItem();
+    }
+
+    head = head->getSiguiente(); // [cabeza actual] -> [cabeza siguiente]; [cabeza actual] = [cabeza siguiente]
     Nodo *actual = head;
 
     // REVISAR ESTE CODIGO, PUEDE QUE ESTE MAL
     // movemos toda la cola una posicion hacia adelante
     while (actual->getSiguiente() != nullptr) {
+        actual = actual->getSiguiente(); // avanzamos al siguiente nodo
         actual->setAnterior(actual->getAnterior()); // asignamos el apuntador del nodo anterior al actual
         actual->setItem(actual->getItem()); //asignamos el item que tiene el nodo actual
         actual->setSiguiente(actual->getSiguiente()); // asignamos el apuntador del nodo siguiente al actual
-        actual = actual->getSiguiente(); // avanzamos al siguiente nodo
     }
 
     return primerNodo->getItem();
