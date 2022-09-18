@@ -3,8 +3,7 @@
 
 #include "Object.h"
 
-class Nodo
-{
+class Nodo : public Object {
 	public:
 
 		Nodo();
@@ -18,10 +17,13 @@ class Nodo
 		void            setSiguiente(Nodo* siguiente);
 		Nodo*           getSiguiente();
 
+        bool            equals(Object*);
+        string          toString();
+
 	protected:
-		Nodo*           siguiente;
-		Object*         item;
 		Nodo*           anterior;
+		Object*         item;
+		Nodo*           siguiente;
 };
 
 #endif

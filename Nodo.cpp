@@ -4,15 +4,15 @@
  * Constructor por default
  * **/
 Nodo::Nodo() {
-    siguiente = nullptr;
-    item = nullptr;
     anterior = nullptr;
+    item = nullptr;
+    siguiente = nullptr;
 }
 
 /*
  * Constructor con parametros
  * **/
-Nodo::Nodo(Nodo* siguiente, Object *pObject, Nodo* anterior) {
+Nodo::Nodo(Nodo* anterior, Object *pObject, Nodo* siguiente) {
     this->anterior = anterior;
     this->item = pObject;
     this->siguiente = siguiente;
@@ -68,4 +68,14 @@ void Nodo::setAnterior(Nodo* anterior){
  * **/
 Nodo* Nodo::getAnterior(){
 	return anterior;
+}
+
+// Metodos de object
+
+bool Nodo::equals(Object *) {
+    return false;
+}
+
+string Nodo::toString() {
+    return std::string("Nodo {  item: " + item->toString() + "}");
 }

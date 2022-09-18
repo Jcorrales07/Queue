@@ -68,11 +68,12 @@ void LinkedQueue::encolar(Object* obj) {
     Nodo *actual = head;
     // vamos a recorrer la lista hasta llegar al ultimo nodo
     while(actual->getSiguiente() != nullptr) {
+        std::cout << "tiene siguiente" << std::endl;
         actual = actual->getSiguiente();
     }
 
     // creamos un nuevo nodo con el alumno y lo enlazamos
-    Nodo *nuevoNodo = new Nodo(actual, alumno, nullptr);
+    Nodo *nuevoNodo = new Nodo(nullptr, alumno, nullptr);
     nuevoNodo->setAnterior(actual);
     actual->setSiguiente(nuevoNodo);
 }
@@ -118,11 +119,13 @@ void LinkedQueue::imprime_cola() {
     }
 
     Nodo *actual = head;
+    auto *alumno = dynamic_cast<Alumno*>(actual->getItem()); // casteo el objeto a Alumno
+    std::cout << " [ " << alumno->toString() << " ] "<< std::endl;
 
     while (actual->getSiguiente() != nullptr) {
-        auto *alumno = dynamic_cast<Alumno*>(actual->getItem()); // casteo el objeto a Alumno
-        std::cout << " [ " << alumno->toString() << " ] "<< std::endl;
         actual = actual->getSiguiente();
+        alumno = dynamic_cast<Alumno*>(actual->getItem()); // casteo el objeto a Alumno
+        std::cout << " [ " << alumno->toString() << " ] "<< std::endl;
         alumno = nullptr;
     }
 }

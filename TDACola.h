@@ -4,8 +4,7 @@
 #include "Object.h"
 #include "Alumno.h"
 
-class TDACola
-{
+class TDACola: public Object {
 	public:
         // Metodos de la clase
         TDACola();
@@ -17,7 +16,11 @@ class TDACola
 		virtual Object*                 desencolar(int) = 0; //suprime el elemento en la posicion indicada (el primero siempre)
 		virtual Object*                 primero() = 0; //devuelve el primer elemento de la cola
 		virtual bool                    estaVacia() = 0; //devuelve true si la cola esta vacia
-		
+
+        // Metodos heredados de Object
+        bool                            equals(Object*);
+        string                          toString();
+
 	protected:
         Object** array;
         int capacidad;

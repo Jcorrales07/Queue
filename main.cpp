@@ -10,7 +10,7 @@ void                arrayCola();
 void                linkedCola();
 
 ArrayQueue          *arrayQueue = nullptr;
-//LinkedQueue         *linkedQueue = nullptr;
+LinkedQueue         *linkedQueue = nullptr;
 
 int main() {
     menuCola();
@@ -35,9 +35,11 @@ void menuCola() {
                 arrayCola();
                 break;
             case 2:
-                operacionesCola();
+                linkedCola();
                 break;
             case 3:
+                std::cout << "Regresando al Menu Principal..." << std::endl;
+                //menuPrincipal();
                 break;
             default:
                 std::cout << "Opcion no valida" << std::endl;
@@ -84,13 +86,15 @@ void arrayCola() {
 
         } else if (opcion == 2) {
 
-            arrayQueue->desencolar(0);
+            auto *alumnoDesencolado = dynamic_cast<Alumno *>(arrayQueue->desencolar(0));
+            auto resultado= (alumnoDesencolado) ? "Alumno desencolado: " + alumnoDesencolado->toString() : "No hay elementos en cola";
+            std::cout << resultado << std::endl;
 
         } else if (opcion == 3) {
 
             auto* primerAlumno = dynamic_cast<Alumno *>(arrayQueue->primero());
 
-            string respuesta = (primerAlumno) ? "El primer alumno es " + primerAlumno->getNombre()
+            string respuesta = (primerAlumno) ? "El primer alumno en cola es: " + primerAlumno->toString()
                                                 : "La cola esta vacia";
 
             std::cout << respuesta << std::endl;
@@ -105,18 +109,12 @@ void arrayCola() {
             std::cout << respuesta << std::endl;
 
         } else if (opcion == 5) {
-            try {
 
                 arrayQueue->imprime_cola();
 
-            } catch (std::exception &e) {
-
-                std::cout << e.what() << std::endl;
-
-            }
         } else if (opcion == 6) {
 
-            menuCola();
+//            menuPrincipal();
 
         } else {
             std::cout << "Opcion no valida" << std::endl;
@@ -126,7 +124,7 @@ void arrayCola() {
 
 void linkedCola() {
 
-//    linkedQueue = new LinkedQueue();
+    linkedQueue = new LinkedQueue();
     int opcion = 0;
 
     do {
@@ -146,7 +144,7 @@ void linkedCola() {
             std::cin >> codigo;
 
             Object *nuevoAlumno = new Alumno(nombre, codigo);
-//            arrayQueue->encolar(nuevoAlumno);
+            linkedQueue->encolar(nuevoAlumno);
 
         } else if (opcion == 2) {
 
@@ -171,21 +169,16 @@ void linkedCola() {
 //            std::cout << respuesta << std::endl;
 
         } else if (opcion == 5) {
-//            try {
-//
-//                arrayQueue->imprime_cola();
-//
-//            } catch (std::exception &e) {
-//
-//                std::cout << e.what() << std::endl;
-//
-//            }
+
+                linkedQueue->imprime_cola();
+
         } else if (opcion == 6) {
 
-            menuCola();
+//            menuPrincipal();
 
         } else {
             std::cout << "Opcion no valida" << std::endl;
         }
+
     } while (opcion != 6);
 }

@@ -99,7 +99,7 @@ Object* TDACola::desencolar(int posicion) {
  * **/
 Object* TDACola::primero() {
     if (!estaVacia()) {
-        return array[0];
+        return this->array[0];
     }
 
     return nullptr;
@@ -116,5 +116,15 @@ bool TDACola::estaVacia() {
 //        }
 //    }
 //    return false;
-    return array[0] == nullptr;
+    return this->array[0] == nullptr;
+}
+
+
+// metodos de object
+bool TDACola::equals(Object *) {
+    return false;
+}
+
+string TDACola::toString() {
+    return "toString() de TDACola";
 }

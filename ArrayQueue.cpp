@@ -92,7 +92,8 @@ Object* ArrayQueue::desencolar(int posicion) {
  * Devuelve true si la cola está vacía
  * **/
 bool ArrayQueue::estaVacia() {
-    return array[0] == nullptr;
+//    return TDACola::estaVacia();
+    return this->array[0] == nullptr;
 }
 
 /*
@@ -113,6 +114,5 @@ void ArrayQueue::imprime_cola() {
         std::cout << "La cola esta vacia" << std::endl;
     }
     std::cout << std::endl;
-//    TDACola::imprime_cola();
 }
 
